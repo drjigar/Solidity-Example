@@ -6,29 +6,30 @@ import {Counter} from "../src/counter.sol";
 
 contract testCounter is Test{
     
-    Counter public counter;
+    Counter public counterT;
 
     function setUp() public{
-        counter = new Counter();
+        counterT = new Counter();
      }
      function testInc() public {
-        counter.inc();
-        console.log(counter.count());
-        assertEq(counter.count() , 1);
+        counterT.inc();
+        console.log(counterT.count());
+        assertEq(counterT.count(), 1);
      }
      function testFailDec() public {
-        counter.dec();
+        counterT.dec();
      }
      function testFailUnderflow() public {
         // vm.expectRevert(stdError.arithmeticError);
-        counter.dec();
+        counterT.dec();
      }
      function testDec() public {
-        counter.inc();
-        counter.inc();
-        console.log(counter.count());
-        counter.dec();
-        assertEq(counter.count() , 1);
+        counterT.inc();
+        counterT.inc();
+        console.log(counterT.count());
+        counterT.dec();
+        console.log(counterT.count());
+        assertEq(counterT.count(), 1);
     
      }
 
